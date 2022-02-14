@@ -1,5 +1,8 @@
 /*
  * made By: Ava Fritts
+ * Created: Feb 9th??
+ * 
+ * Last edited: Feb 14th 2022
  * 
  */
 using System.Collections;
@@ -60,11 +63,18 @@ public class Slingshot : MonoBehaviour
         Vector3 projPos = launchPos + mouseDelta;
         projectile.transform.position = projPos;
 
+        //move rope to new position
+        Vector3 ropePos = launchPos + (mouseDelta / 2);
+        rope.transform.position = ropePos;
+
         if (Input.GetMouseButtonUp(0))
         {
             aimingMode = false;
             projectileRB.isKinematic = false;
             projectileRB.velocity = -mouseDelta * velocityMultiplier;
+
+            FollowCam.POI = projectile; //set POI for camera
+
             projectile = null; //remove the projectile from the instance/script
         }
 

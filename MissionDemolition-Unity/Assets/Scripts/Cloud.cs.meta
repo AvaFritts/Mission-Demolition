@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: c01ed93407dd6364eb07e7b13ef2ff81
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - clouSphere: {fileID: 9172992378158865121, guid: fbaf9b69ad396b24bbd19cca9e176342, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
