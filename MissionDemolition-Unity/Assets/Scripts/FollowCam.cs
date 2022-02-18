@@ -2,7 +2,7 @@
  * made By: Ava Fritts
  * Created: Feb 14th 2022
  * 
- * Last edited: Feb 14th 2022
+ * Last edited: Feb 16th 2022
  * 
  */
 using System.Collections;
@@ -35,8 +35,31 @@ public class FollowCam : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (POI == null) return;
-        Vector3 destination = POI.transform.position;
+        //if (POI == null) return; //if there is no POI exit method
+
+        //Vector3 destination = POI.transform.position; //get destination of POI
+        Vector3 destination;
+        if (POI == null) //if no POI
+        {
+            destination = Vector3.zero; //destination = 0
+        }
+        else
+        {
+            destination = POI.transform.position;
+            if(POI.tag == "Projectile")
+            {
+                if (POI.GetComponent<Rigidbody>().IsSleeping())
+                {
+                    POI = null; //null POI if rigidbody is asleep
+                    return; //in next update;
+
+                }//end if
+
+            }//end if (POI.tag == "Projectile")
+
+        }//end else
+
+        //Limit camera's min XY vals
         destination.x = Mathf.Max(minXY.x, destination.x);
         destination.y = Mathf.Max(minXY.y, destination.y);
         //interpolate from current camera position toward destination

@@ -1,3 +1,10 @@
+/*
+ * made By: Ava Fritts
+ * Created: Feb 14th 2022
+ * 
+ * Last edited: Feb 16th 2022
+ * 
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +42,7 @@ public class Cloud : MonoBehaviour
             offset.x *= sphereOffsetScale.x;
             offset.y *= sphereOffsetScale.y;
             offset.z *= sphereOffsetScale.z;
+            spTrans.localPosition = offset;
 
             //randomly assign scale
             Vector3 scale = Vector3.one;
@@ -51,8 +59,20 @@ public class Cloud : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Restart();
+        }
+    }*/
+
+    void Restart()
+    {
+        foreach(GameObject sp in spheres)
+        {
+            Destroy(sp);
+        }
+
+        Start();
     }
 }

@@ -11,10 +11,13 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
+    static private Slingshot S;
+
     /***VARIABLES***/
     [Header("Set in Inspector")]
     public GameObject prefabProjectile;
     public float velocityMultiplier = 8f;
+    //private Rigidbody projectileRigidBody;
 
     [Header("Set Dynamically")]
     public GameObject launchPoint;
@@ -25,8 +28,17 @@ public class Slingshot : MonoBehaviour
     public bool aimingMode; //is player aiming
     public Rigidbody projectileRB; //rigidbody of projectile
 
+    static public Vector3 LAUNCH_POS {
+        get
+        {
+            if (S == null) return Vector3.zero;
+            return S.launchPos;
+        }
+    }
+    
     private void Awake()
     {
+        S = this;
         Transform launchPointTrans = transform.Find("LaunchPoint"); //find child object
 
         launchPoint = launchPointTrans.gameObject; //the game object of child object?
