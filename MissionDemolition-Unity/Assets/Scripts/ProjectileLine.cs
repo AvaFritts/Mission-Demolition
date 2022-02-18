@@ -2,7 +2,7 @@
  * made By: Ava Fritts
  * Created: Feb 16th 2022
  * 
- * Last edited: Feb 16th 2022
+ * Last edited: Feb 18th 2022
  * 
  */
 using System.Collections;
@@ -95,6 +95,28 @@ public class ProjectileLine : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (poi == null)
+        {
+            if (FollowCam.POI != null)
+            {
+                if (FollowCam.POI.tag == "Projectile")
+                {
+                    poi = FollowCam.POI;
+                } else
+                {
+                    return; //if there wasn't a good POI
+                }//end else
+            }// end if (FollowCam.POI != null)
+            else
+            {
+                return; //why is this a duplicate?
+            }
+        }//end if (poi == null)
+
+        AddPoint();
+        if(FollowCam.POI == null)
+        {
+            poi = null; //once followcam.poi is null, local should be null, too.
+        }
     }
 }
