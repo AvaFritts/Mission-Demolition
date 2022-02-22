@@ -66,13 +66,13 @@ public class Cloud : MonoBehaviour
         }
     }*/
 
-    void Restart()
+   /* void Restart()
     {
-        foreach(GameObject sp in spheres)
+        foreach(GameObject sp in spheres) //Clears out old spheres
         {
             Destroy(sp);
         }
 
         Start();
-    }
+    }*/
 }

@@ -1,7 +1,6 @@
 /*
  * made By: Ava Fritts
- * Created: Feb 15th 2022
- * 
+ * Created: Feb 15th 2022 
  * Last edited: Feb 16th 2022
  * 
  */

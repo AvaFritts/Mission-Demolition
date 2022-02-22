@@ -16,6 +16,7 @@ public class ProjectileLine : MonoBehaviour
 
     [Header("Set in Inspector")]
     public float minDist = .1f;
+    //public 
 
     private LineRenderer line;
     private GameObject _poi;
@@ -26,16 +27,17 @@ public class ProjectileLine : MonoBehaviour
         S = this; //sets singleton
 
         line = GetComponent<LineRenderer>(); //ref to it
+        //line.SetWidth;
         line.enabled = false; //disable LineRenderer
         points = new List<Vector3>(); //new list
         
     }
 
-    public GameObject poi
+    public GameObject poi //Property
     {
         get { return (_poi); }
         set { _poi = value;
-            if (_poi != null)
+            if (_poi != null) //resets everything
             {
                 line.enabled = false;
                 points = new List<Vector3>();
@@ -59,13 +61,14 @@ public class ProjectileLine : MonoBehaviour
             return;
         } //end if
 
-        if (points.Count == 0)
+        if (points.Count == 0) //if we found the launch point
         {
             Vector3 launchPosDiff = pt - Slingshot.LAUNCH_POS; //defined in Slingshot
             points.Add(pt + launchPosDiff);
             points.Add(pt);
             line.positionCount = 2;
 
+            //Sets first two points
             line.SetPosition(0, points[0]);
             line.SetPosition(1, points[1]);
 

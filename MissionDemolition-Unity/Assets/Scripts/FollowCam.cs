@@ -26,12 +26,6 @@ public class FollowCam : MonoBehaviour
         camZ = this.transform.position.z; //sets Z
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {

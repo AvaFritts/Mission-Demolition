@@ -1,8 +1,8 @@
 /*
- * made By: Ava Fritts
+ * Made By: Ava Fritts
  * Created: Feb 18th 2022
  * 
- * Last edited: Feb 18th 2022
+ * Last edited: Feb 19th 2022
  * 
  */
 using System.Collections;
@@ -13,11 +13,12 @@ public class Goal : MonoBehaviour
 {
     public static bool goalMet = false;
     // Start is called before the first frame update
-    void onTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Projectile") //checking to see if projectile
         {
             Goal.goalMet = true;
+            print("Goal Hit");
 
             Material mat = GetComponent<Renderer>().material; //changing color
             Color c = mat.color;

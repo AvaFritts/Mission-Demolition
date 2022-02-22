@@ -2,7 +2,7 @@
  * made By: Ava Fritts
  * Created: Feb 9th??
  * 
- * Last edited: Feb 14th 2022
+ * Last edited: Feb 21th 2022
  * 
  */
 using System.Collections;
@@ -21,8 +21,8 @@ public class Slingshot : MonoBehaviour
 
     [Header("Set Dynamically")]
     public GameObject launchPoint;
-    public GameObject rope;
-    public Vector3 ropePos;
+    //public GameObject rope;
+    //public Vector3 ropePos;
     public Vector3 launchPos; //launch position of projectile
     public GameObject projectile; //projectile instance
     public bool aimingMode; //is player aiming
@@ -45,10 +45,10 @@ public class Slingshot : MonoBehaviour
         launchPoint.SetActive(false); //disable game object
         launchPos = launchPointTrans.position;
 
-        Transform ropeTrans = transform.Find("Rope");
+        /*Transform ropeTrans = transform.Find("Rope");
         rope = ropeTrans.gameObject; //the game object of child object?
         rope.SetActive(false); //disable game object
-        ropePos = ropeTrans.position;
+        ropePos = ropeTrans.position;*/
     }//end Wake
 
     private void Update()
@@ -75,9 +75,9 @@ public class Slingshot : MonoBehaviour
         Vector3 projPos = launchPos + mouseDelta;
         projectile.transform.position = projPos;
 
-        //move rope to new position
+        /*//move rope to new position
         Vector3 ropePos = launchPos + (mouseDelta / 2);
-        rope.transform.position = ropePos;
+        rope.transform.position = ropePos;*/
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -88,6 +88,8 @@ public class Slingshot : MonoBehaviour
             FollowCam.POI = projectile; //set POI for camera
 
             projectile = null; //remove the projectile from the instance/script
+            MissionDemolition.ShotFired();
+            ProjectileLine.S.poi = projectile;
         }
 
     }//end update
@@ -95,14 +97,14 @@ public class Slingshot : MonoBehaviour
     private void OnMouseEnter()
     {
         launchPoint.SetActive(true); //enable game object
-        rope.SetActive(true);
+        //rope.SetActive(true);
         print("Slingshot Entered");
     }//End OnMouseEnter
 
     private void OnMouseExit()
     {
         launchPoint.SetActive(false);
-        rope.SetActive(false);
+        //rope.SetActive(false);
         print("Slingshot Left");
     }//end OnMouseExit
 
