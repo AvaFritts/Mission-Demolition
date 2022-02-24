@@ -90,6 +90,11 @@ public class MissionDemolition : MonoBehaviour
             SwitchView("Show Both"); //zoom out
             Invoke("NextLevel", 2f);
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartLevel(); //restart level if the user has determined that it is currently impossible to hit the goal.
+        }
     }//end update
 
     void NextLevel()
@@ -128,7 +133,7 @@ public class MissionDemolition : MonoBehaviour
                 break;
         }
 
-    } //end SwitchView
+    } //end SwitchView 
 
     //incriment Shots Taken wherever allowed
     public static void ShotFired()
